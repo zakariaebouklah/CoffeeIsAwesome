@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
@@ -42,19 +43,16 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun FirstComposable(): Unit {
-    Text(
-        text= "Hi I'm Zaki...",
-        // order matters
-//        modifier = Modifier.padding(16.dp).background(Color.Green)
-        modifier = Modifier.background(Color.Green).padding(16.dp)
-    )
-}
-
-@Preview(showBackground = true)
-@Preview(widthDp = 150)
-@Composable
-fun SecondComposable(): Unit {
-    Text(text= "Hi I'm Zaki...")
+    Column { // a column is used like a container to hold different composables.
+        Text(
+            text= "Hi I'm Zaki...",
+            modifier = Modifier.background(Color.Green).padding(16.dp)
+        )
+        Text(
+            text= "Hi I'm a soft-dev engineer....",
+            modifier = Modifier.background(Color.Gray).padding(16.dp)
+        )
+    }
 }
 
 //@Composable
