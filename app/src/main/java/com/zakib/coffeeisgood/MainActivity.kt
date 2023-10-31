@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
@@ -43,14 +44,18 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun FirstComposable(): Unit {
-    Column { // a column is used like a container to hold different composables.
+    Row { // a column is used like a container to hold different composables.
         Text(
             text= "Hi I'm Zaki...",
-            modifier = Modifier.background(Color.Green).padding(16.dp)
+            modifier = Modifier
+                .background(Color.Green)
+                .padding(16.dp)
         )
         Text(
             text= "Hi I'm a soft-dev engineer....",
-            modifier = Modifier.background(Color.Gray).padding(16.dp)
+            modifier = Modifier
+                .background(Color.Gray)
+                .padding(16.dp)
         )
     }
 }
