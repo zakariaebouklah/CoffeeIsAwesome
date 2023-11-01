@@ -32,6 +32,14 @@ fun Offer() {
     )
 
     /**
+     * using the background_pattern svg
+     */
+    Image(
+        painter = painterResource(R.drawable.background_pattern),
+        contentDescription = "Coffee Pattern"
+    )
+
+    /**
      * So the idea is that we can go and use all the semantic styles in the theme
      * and try to keep working there instead of hard coding.
      */
@@ -39,14 +47,6 @@ fun Offer() {
         modifier = Modifier.padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
             ){
-
-        /**
-         * using the background_pattern svg 
-         */
-        Image(
-            painter = painterResource(R.drawable.background_pattern),
-            contentDescription = "Coffee Pattern"
-        )
 
         Text(
             text = "My title",
@@ -67,5 +67,6 @@ fun Offer() {
                 .padding(16.dp)
                 .background(Alternative1)
         )
+
     }
 }
