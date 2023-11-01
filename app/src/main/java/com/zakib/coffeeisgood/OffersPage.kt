@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.zakib.coffeeisgood.ui.theme.Alternative1
 import com.zakib.coffeeisgood.ui.theme.Alternative2
 import com.zakib.coffeeisgood.ui.theme.Primary
+import com.zakib.coffeeisgood.ui.theme.Secondary
 
 /*
 @Preview(showBackground = true)
@@ -36,6 +37,7 @@ fun OffersPage() {
     ) {
         Offer(title = "Early Coffe", description = "10% off. Offer valid from 6am to 9am.")
         Offer(title = "Welcome Gift", description = "25% off on your first order.")
+        Offer(title = "Special Offer", description = "35% off ordering 3 items.")
     }
 }
 
@@ -74,9 +76,7 @@ fun Offer(title: String, description: String) {
             painter = painterResource(R.drawable.background_pattern),
             contentDescription = "Coffee Pattern",
             contentScale = ContentScale.FillWidth,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(100.dp)
+            modifier = Modifier.matchParentSize()
         )
 
         /**
@@ -96,11 +96,10 @@ fun Offer(title: String, description: String) {
                 // using the theme colors
                 modifier = Modifier
                     .padding(16.dp)
-                    .background(Primary)
+                    .background(Secondary)
                     .padding(16.dp),
                 fontWeight = FontWeight.Medium
             )
-            Spacer(modifier = Modifier.height(16.dp))
             Text(
                 text = description,
                 style = MaterialTheme.typography.h5,
