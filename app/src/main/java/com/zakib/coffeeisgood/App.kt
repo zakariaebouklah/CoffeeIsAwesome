@@ -43,7 +43,7 @@ fun App() {
              */
             NavBar(
                 selectedRoute = selectedRoute.value,
-                callback = { newRoute -> selectedRoute.value = newRoute })
+                onChange = { newRoute -> selectedRoute.value = newRoute })
         }
     ) {
         OffersPage()

@@ -4,7 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Menu
@@ -15,68 +15,54 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.unit.dp
-import com.zakib.coffeeisgood.ui.theme.Alternative1
-import androidx.compose.material.Text
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.zakib.coffeeisgood.ui.theme.Alternative1
 import com.zakib.coffeeisgood.ui.theme.Primary
+import com.zakib.coffeeisgood.ui.theme.OnPrimary
 
-data class Navigation(
-    var name:String,
-    var icon:ImageVector,
-    var route:String,
-)
+data class NavPage(var name: String, var icon: ImageVector, var route: String)
 
 object Routes {
-    var MenuPage= Navigation(name = "Menu", Icons.Outlined.Menu, route = "menu")
-    var OffersPage= Navigation(name = "Offers", Icons.Outlined.Star, route = "offers")
-    var OrderPage= Navigation(name = "My Order", Icons.Outlined.ShoppingCart, route = "my-order")
-    var InfoPage= Navigation(name = "Menu", Icons.Outlined.Info, route = "info")
+    var MenuPage = NavPage("Menu", Icons.Outlined.Menu, "menu")
+    var OffersPage = NavPage("Offers", Icons.Outlined.Star, "offers")
+    var OrderPage =  NavPage("My Order", Icons.Outlined.ShoppingCart, "order")
+    var InfoPage =  NavPage("Info", Icons.Outlined.Info, "info")
 
-    val Pages = listOf(MenuPage, OffersPage, OrderPage, InfoPage)
+    val pages = listOf(MenuPage, OffersPage, OrderPage, InfoPage)
 }
 
+@Preview(showBackground = true, widthDp = 400)
 @Composable
-fun NavBar(selectedRoute: String = Routes.MenuPage.route, callback: (String) -> Unit= {}) {
-    Row (
-        horizontalArrangement = Arrangement.SpaceEvenly,
+fun NavBar(selectedRoute: String = Routes.MenuPage.route, onChange: (String)->Unit = {}) {
+    Row(horizontalArrangement = Arrangement.SpaceEvenly,
         modifier = Modifier
             .background(Primary)
-            .padding(11.dp)
+            .padding(8.dp)
             .fillMaxWidth()
-            ){
-        for (page in Routes.Pages){
-            NavBarItem(
-                page = page,
-                selected = page.route == selectedRoute,
-                // apply a modifier to perform click
-                modifier = Modifier.clickable {
-                    callback(page.route)
-                }
+    ) {
+        for (page in Routes.pages) {
+            NavBarItem(page,
+                selected = selectedRoute == page.route,
+                modifier = Modifier
+                    .clickable {
+                        onChange(page.route)
+                    }
             )
         }
     }
 }
 
-/**
- * My own composable does not contain modifiers, If I want modifiers,
- * I need to accept that were in the function signature, is of type modifier.
- */
 @Composable
-fun NavBarItem(page: Navigation, selected: Boolean = false, modifier: Modifier = Modifier) {
+fun NavBarItem(page: NavPage, selected: Boolean = false, modifier: Modifier = Modifier) {
     Column(horizontalAlignment = Alignment.CenterHorizontally,
-        /**
-         * What it's doing it depends on the modifier.Okay, what's it gonna do?In this case,
-         * it's not like making a padding of 20.
-         * It first makes another with 12 and another with 8 more.
-         */
         modifier = modifier.padding(horizontal = 12.dp)) {
         Image(
             imageVector = page.icon,
             contentDescription = page.name,
             colorFilter = ColorFilter.tint(
-                if (selected) Primary else Alternative1
+                if (selected) OnPrimary else Alternative1
             ),
             modifier = Modifier
                 .padding(bottom = 8.dp)
@@ -84,7 +70,7 @@ fun NavBarItem(page: Navigation, selected: Boolean = false, modifier: Modifier =
         )
         Text(page.name,
             fontSize = 12.sp,
-            color = if (selected) Primary else Alternative1
+            color = if (selected) OnPrimary else Alternative1
         )
     }
 }
