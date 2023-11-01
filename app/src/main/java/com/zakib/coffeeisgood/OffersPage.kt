@@ -1,5 +1,6 @@
 package com.zakib.coffeeisgood
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
@@ -12,6 +13,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Preview
@@ -40,7 +42,7 @@ fun Offer() {
         Text(
             text = "Description",
             style = MaterialTheme.typography.h3,
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(16.dp).background(Color.Green)
         )
     }
 }
