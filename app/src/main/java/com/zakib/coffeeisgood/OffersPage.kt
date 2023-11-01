@@ -1,5 +1,6 @@
 package com.zakib.coffeeisgood
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,7 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.zakib.coffeeisgood.ui.theme.Alternative1
 import com.zakib.coffeeisgood.ui.theme.Alternative2
@@ -38,11 +39,22 @@ fun Offer() {
         modifier = Modifier.padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
             ){
+
+        /**
+         * using the background_pattern svg 
+         */
+        Image(
+            painter = painterResource(R.drawable.background_pattern),
+            contentDescription = "Coffee Pattern"
+        )
+
         Text(
             text = "My title",
             style = MaterialTheme.typography.h1,
             // using the theme colors
-            modifier = Modifier.background(MaterialTheme.colors.primary).padding(16.dp),
+            modifier = Modifier
+                .background(MaterialTheme.colors.primary)
+                .padding(16.dp),
             fontWeight = FontWeight.Medium
         )
         Spacer(modifier = Modifier.height(16.dp))
