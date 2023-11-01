@@ -13,6 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.zakib.coffeeisgood.pages.InfoPage
+import com.zakib.coffeeisgood.pages.MenuPage
+import com.zakib.coffeeisgood.pages.OrderPage
 import com.zakib.coffeeisgood.ui.theme.CoffeeIsGoodTheme
 
 @Preview
@@ -39,9 +42,9 @@ fun App() {
         },
         content = {
                   when(selectedRoute.value){
-                    Routes.MenuPage.route -> Text("Menu")
-                    Routes.InfoPage.route -> Text("Info")
-                    Routes.OrderPage.route -> Text("Order")
+                    Routes.MenuPage.route -> MenuPage()
+                    Routes.InfoPage.route -> InfoPage()
+                    Routes.OrderPage.route -> OrderPage()
                     Routes.OffersPage.route -> OffersPage()
                   }
         },

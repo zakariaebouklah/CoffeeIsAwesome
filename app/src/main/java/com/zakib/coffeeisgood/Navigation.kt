@@ -25,10 +25,10 @@ import com.zakib.coffeeisgood.ui.theme.OnPrimary
 data class NavPage(var name: String, var icon: ImageVector, var route: String)
 
 object Routes {
-    var MenuPage = NavPage("Menu", Icons.Outlined.Menu, "menu")
-    var OffersPage = NavPage("Offers", Icons.Outlined.Star, "offers")
-    var OrderPage =  NavPage("My Order", Icons.Outlined.ShoppingCart, "order")
-    var InfoPage =  NavPage("Info", Icons.Outlined.Info, "info")
+    val MenuPage = NavPage("Menu", Icons.Outlined.Menu, "menu")
+    val OffersPage = NavPage("Offers", Icons.Outlined.Star, "offers")
+    val OrderPage =  NavPage("My Order", Icons.Outlined.ShoppingCart, "order")
+    val InfoPage =  NavPage("Info", Icons.Outlined.Info, "info")
 
     val pages = listOf(MenuPage, OffersPage, OrderPage, InfoPage)
 }
