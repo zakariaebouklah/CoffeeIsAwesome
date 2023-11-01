@@ -1,6 +1,7 @@
 package com.zakib.coffeeisgood
 
 import androidx.compose.foundation.Image
+import androidx.compose.material.Text
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Scaffold
@@ -27,7 +28,7 @@ fun AppPreview() {
 fun App() {
     // setup the state for the navigation between pages
     val selectedRoute = remember {
-        mutableStateOf(Routes.MenuPage.route)
+        mutableStateOf("menu")
     }
 
     Scaffold (
@@ -35,6 +36,14 @@ fun App() {
             TopAppBar() {
                 AppTitle()
             }
+        },
+        content = {
+                  when(selectedRoute.value){
+                    Routes.MenuPage.route -> Text("Menu")
+                    Routes.InfoPage.route -> Text("Info")
+                    Routes.OrderPage.route -> Text("Order")
+                    Routes.OffersPage.route -> OffersPage()
+                  }
         },
         bottomBar = {
             /**
@@ -45,9 +54,7 @@ fun App() {
                 selectedRoute = selectedRoute.value,
                 onChange = { newRoute -> selectedRoute.value = newRoute })
         }
-    ) {
-        OffersPage()
-    }
+    )
 }
 
 @Composable
