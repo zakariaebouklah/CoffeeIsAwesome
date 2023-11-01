@@ -17,6 +17,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.zakib.coffeeisgood.ui.theme.Alternative1
+import com.zakib.coffeeisgood.ui.theme.Alternative2
 
 @Preview(showBackground = true)
 @Composable
@@ -39,17 +41,19 @@ fun Offer() {
         Text(
             text = "My title",
             style = MaterialTheme.typography.h1,
-            modifier = Modifier.background(Color.Gray).padding(16.dp),
+            // using the theme colors
+            modifier = Modifier.background(MaterialTheme.colors.primary).padding(16.dp),
             fontWeight = FontWeight.Medium
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text(
             text = "Description",
             style = MaterialTheme.typography.h3,
+            // using the colors defined inside Colors.kt directly
             modifier = Modifier
-                .background(Color.LightGray)
+                .background(Alternative2)
                 .padding(16.dp)
-                .background(Color.Green)
+                .background(Alternative1)
         )
     }
 }
