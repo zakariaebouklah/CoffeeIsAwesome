@@ -26,7 +26,7 @@ fun AppPreview() {
 @Composable
 fun App() {
     // setup the state for the navigation between pages
-    var selectedRoute = remember {
+    val selectedRoute = remember {
         mutableStateOf(Routes.MenuPage.route)
     }
 

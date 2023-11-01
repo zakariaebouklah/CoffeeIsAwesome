@@ -26,33 +26,25 @@ data class Navigation(
     var name:String,
     var icon:ImageVector,
     var route:String,
-){
-
-}
+)
 
 object Routes {
-    val MenuPage= Navigation(name = "Menu", Icons.Outlined.Menu, route = "menu")
-    val OffersPage= Navigation(name = "Offers", Icons.Outlined.Star, route = "offers")
-    val OrderPage= Navigation(name = "My Order", Icons.Outlined.ShoppingCart, route = "my-order")
-    val InfoPage= Navigation(name = "Menu", Icons.Outlined.Info, route = "info")
+    var MenuPage= Navigation(name = "Menu", Icons.Outlined.Menu, route = "menu")
+    var OffersPage= Navigation(name = "Offers", Icons.Outlined.Star, route = "offers")
+    var OrderPage= Navigation(name = "My Order", Icons.Outlined.ShoppingCart, route = "my-order")
+    var InfoPage= Navigation(name = "Menu", Icons.Outlined.Info, route = "info")
 
     val Pages = listOf(MenuPage, OffersPage, OrderPage, InfoPage)
 }
 
-@Preview(showBackground = true)
 @Composable
-fun NavBarItemPreview() {
-    NavBarItem(page = Routes.MenuPage, modifier = Modifier.padding(8.dp))
-}
-
-@Composable
-fun NavBar(selectedRoute: String = Routes.MenuPage.route, callback: (String) -> Unit) {
+fun NavBar(selectedRoute: String = Routes.MenuPage.route, callback: (String) -> Unit= {}) {
     Row (
-        horizontalArrangement = Arrangement.SpaceAround,
+        horizontalArrangement = Arrangement.SpaceEvenly,
         modifier = Modifier
-            .fillMaxWidth()
             .background(Primary)
             .padding(11.dp)
+            .fillMaxWidth()
             ){
         for (page in Routes.Pages){
             NavBarItem(
@@ -84,7 +76,7 @@ fun NavBarItem(page: Navigation, selected: Boolean = false, modifier: Modifier =
             imageVector = page.icon,
             contentDescription = page.name,
             colorFilter = ColorFilter.tint(
-                if (selected) Alternative1 else Primary
+                if (selected) Primary else Alternative1
             ),
             modifier = Modifier
                 .padding(bottom = 8.dp)
@@ -92,7 +84,7 @@ fun NavBarItem(page: Navigation, selected: Boolean = false, modifier: Modifier =
         )
         Text(page.name,
             fontSize = 12.sp,
-            color = if (selected) Alternative1 else Primary
+            color = if (selected) Primary else Alternative1
         )
     }
 }
