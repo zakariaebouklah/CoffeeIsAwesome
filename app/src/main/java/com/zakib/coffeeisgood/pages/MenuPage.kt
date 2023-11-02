@@ -19,12 +19,13 @@ import androidx.compose.ui.unit.dp
 import com.zakib.coffeeisgood.ui.theme.Alternative1
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
+import com.zakib.coffeeisgood.DataManager
 import com.zakib.coffeeisgood.R
 import com.zakib.coffeeisgood.ui.theme.CardBackground
 
 @Preview
 @Composable
-fun MenuPage() {
+fun MenuPage(dataManager: DataManager) {
     LazyColumn{
         items(count = 7){
             Card (

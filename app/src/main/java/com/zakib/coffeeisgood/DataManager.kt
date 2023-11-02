@@ -1,16 +1,25 @@
 package com.zakib.coffeeisgood
 
+import android.app.Application
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 
-class DataManager {
+// converting data manager to a view model
+class DataManager(app: Application) : AndroidViewModel(app) {
 
     // Every time the menu changes or every time the cart changes,we may need to update the UI, right?
     // Thus the need for the "by mutableStateOf(...)" clause.
 
     var menu : List<Category> by mutableStateOf(listOf())
     var cart : List<ItemInCart> by mutableStateOf(listOf())
+
+    init {
+        fetchData()
+    }
 
     fun addToCart(p: Product): Unit {
         var found: Boolean = false
@@ -42,6 +51,16 @@ class DataManager {
 
     fun clearCart(): Unit{
         cart = listOf()
+    }
+
+    fun fetchData() {
+        /**
+         * Actually, what you put inside this code block is in a coroutine.
+         * This is no 100% right, but let's say it's in a new thread.
+         */
+        viewModelScope.launch {
+            menu = API.menuService.fetchMenu()
+        }
     }
 
 }

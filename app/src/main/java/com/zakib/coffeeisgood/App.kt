@@ -18,17 +18,8 @@ import com.zakib.coffeeisgood.pages.MenuPage
 import com.zakib.coffeeisgood.pages.OrderPage
 import com.zakib.coffeeisgood.ui.theme.CoffeeIsGoodTheme
 
-@Preview
 @Composable
-fun AppPreview() {
-    // using the desired custom theme not the default android theme.
-    CoffeeIsGoodTheme {
-        App()
-    }
-}
-
-@Composable
-fun App() {
+fun App(dataManager: DataManager) {
     // setup the state for the navigation between pages
     val selectedRoute = remember {
         mutableStateOf("menu")
@@ -42,9 +33,9 @@ fun App() {
         },
         content = {
                   when(selectedRoute.value){
-                    Routes.MenuPage.route -> MenuPage()
+                    Routes.MenuPage.route -> MenuPage(dataManager)
                     Routes.InfoPage.route -> InfoPage()
-                    Routes.OrderPage.route -> OrderPage()
+                    Routes.OrderPage.route -> OrderPage(dataManager)
                     Routes.OffersPage.route -> OffersPage()
                   }
         },
