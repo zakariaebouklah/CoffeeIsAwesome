@@ -23,7 +23,6 @@ import com.zakib.coffeeisgood.DataManager
 import com.zakib.coffeeisgood.R
 import com.zakib.coffeeisgood.ui.theme.CardBackground
 
-@Preview
 @Composable
 fun MenuPage(dataManager: DataManager) {
     LazyColumn{
