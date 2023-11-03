@@ -23,6 +23,13 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
 import com.zakib.coffeeisgood.ui.theme.CoffeeIsGoodTheme
 
+/**
+ * Notes about app Production:
+ *      So if you wanna send a friend your app, you need to create an APK.
+ *      Bundle is for the Play Store only and only Play Store.
+ *      If you're going to publish in other stores such as the Amazon App Store or the Microsoft Store that is accepting Android app for Windows,you must use our APKs as well,
+ */
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
